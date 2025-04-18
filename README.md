@@ -42,13 +42,13 @@ Working the the terminal where you've run `source venv/bin/activate`, run `which
 
 ## Example
 
-> **Note**: this project uses a makefile. If you're unfamiliary with makefiles, [makefiletutorial.com](https://makefiletutorial.com/) is a great place to start.
-
 First, start by cloning this repository. Then, after following the [Setup](#setup) steps above, run:
 
 ```shell
 make example-short
 ```
+
+> **Note**: this project uses a makefile. If you're unfamiliar with makefiles, it probably doesn't matter and you can just run them anyways, but if you're curious [makefiletutorial.com](https://makefiletutorial.com/) is a great place to start.
 
 This will read in `examples/example-01.mp3`, and output a file `example-01.txt` to the `out` directory. The full command being run is:
 
