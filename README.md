@@ -60,7 +60,7 @@ Note that longer audio files take _much_ longer to process. If you're processing
 
 You can run `make example-long` to see how long it takes for a ~ 7 minute audio file.
 
-### Formatting plain text output
+## Formatting plain text output
 
 The `.txt` files output by OpenAI Whisper are formatted a little strangely.
 
@@ -70,4 +70,25 @@ Note that you need to have `node` installed to run the formatting script. It usu
 
 ```shell
 node ./scripts/herd-paragraphs.mjs ./out
+```
+
+## Handling long audio files
+
+I've run into issues trying to process audio files longer than ~ 20 minutes. The speech-to-text process seems to crash out, and starts repeating the same phrases over and over.
+
+I'm not sure if this is an issue with the memory or computing power of the laptop I'm running, or some other weird issue... but splitting the longer audio file into 20 minute chunks might help.
+
+The splitting can be done with `ffmpeg` (20 minutes is 1200 seconds):
+
+```shell
+ffmpeg -i ./files/long-audio-file.mp3 -f segment -segment_time 1200 -c copy ./files/long-audio-file_segment-%03d.mp3
+```
+
+And a quick for loop based on the number of `segment-` files produced above:
+
+```shell
+for i in {0..5};
+do
+    whisper "./files/long-audio-file_segment-00$i.mp3" --model small --language English --output_dir "./out" --output_format txt
+done
 ```
