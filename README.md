@@ -87,6 +87,9 @@ ffmpeg -i ./files/long-audio-file.mp3 -f segment -segment_time 1200 -c copy ./fi
 And a quick for loop based on the number of `segment-` files produced above:
 
 ```shell
+# Activating the Python venv is needed so whisper can be executed
+source venv/bin/activate
+# Iterate over files, in this case 6 files were produced
 for i in {0..5};
 do
     whisper "./files/long-audio-file_segment-00$i.mp3" --model small --language English --output_dir "./out" --output_format txt
