@@ -69,7 +69,7 @@ You can run the script below to generate `_auto-paragraphs.txt` files from all `
 Note that you need to have `node` installed to run the formatting script. It usually makes sense to install node using `nvm`, which you an install with Homebrew, `brew install nvm`.
 
 ```shell
-node ./scripts/herd-paragraphs.mjs ./out
+node ./scripts/herd-paragraphs/main.mjs ./out
 ```
 
 ## Handling long audio files
@@ -94,4 +94,11 @@ for i in {0..5};
 do
     whisper "./files/long-audio-file_segment-00$i.mp3" --model small --language English --output_dir "./out" --output_format txt
 done
+```
+
+You can then concatenate those text files with `cat` and some globbing:
+
+```shell
+cat ./out/long-audio-file_segment-*[0-9].txt > ./out/long-audio-file.txt
+rm -f ./out/long-audio-file_segment-*[0-9].txt
 ```
