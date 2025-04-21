@@ -4,8 +4,14 @@ A demo of using [OpenAI Whisper](https://github.com/openai/whisper), which you c
 
 ## Contents
 
-- [Setup](#setup) - ensure you have dependencies installed
-- [Example](#example) - run transcription on an example audio file
+- [Setup](#setup)
+  - Ensure you have dependencies installed
+- [Example](#example)
+  - Run transcription on an example audio file
+- [Formatting plain text output](#formatting-plain-text-output)
+  - Some tools to format transcription output for human readability
+- [Handling long audio files](#handling-long-audio-files)
+  - Some tools to split and re-assemble long files into smaller chunks
 
 ## Setup
 
